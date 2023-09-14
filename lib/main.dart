@@ -48,8 +48,9 @@ class CupertinoTabBarExample extends StatelessWidget {
           builder: (BuildContext context) {
             if (index == 0) {
               return CupertinoPageScaffold(
-                navigationBar: CupertinoNavigationBar(
+                 navigationBar: CupertinoNavigationBar(
                   middle: Text('Favorites'),
+                  leading:  Icon(CupertinoIcons.add),
                 ),
                 child: Center(
                   child: Text('No favorites yet'),
