@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 /// Flutter code sample for [CupertinoTabBar].
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoApp(
-      theme: CupertinoThemeData(brightness: Brightness.light),
+      theme: CupertinoThemeData(brightness: Brightness.dark),
       home: CupertinoTabBarExample(),
     );
   }
@@ -44,17 +45,33 @@ class CupertinoTabBarExample extends StatelessWidget {
       ),
       tabBuilder: (BuildContext context, int index) {
         return CupertinoTabView(
-          builder: (BuildContext context){
-           if(index ==0){
+          builder: (BuildContext context) {
+            if (index == 0) {
+              return CupertinoPageScaffold(
+                navigationBar: CupertinoNavigationBar(
+                  middle: Text('Favorites'),
+                ),
+                child: Center(
+                  child: Text('No favorites yet'),
+                ),
+              );
+              ;
+            } else if (index == 1) {
+              return Center(
+                child: Text('pestaña 2'),
+              );
+            } else if (index == 2) {
+              return Center(
+                child: Text('pestaña 3'),
+              );
+            } else if (index == 3) {
+              return Center(
+                child: Text('pestaña 4'),
+              );
+            }
             return Center(
-            child: Text('Contenido de la pestaña de inicio'),
+              child: Text('Pestaña no reconocida'),
             );
-           }else{
-            return Center(
-            child: Text('Otra pestaña'),
-            );
-           }
-          
           },
         );
       },
