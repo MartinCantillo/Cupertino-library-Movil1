@@ -42,10 +42,7 @@ class _CupertinoTabBarState extends State<CupertinoTabBarr> {
             icon: Icon(CupertinoIcons.person_alt_circle_fill),
             label: 'Contacts',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.circle_grid_3x3_fill),
-            label: 'Keypad',
-          ),
+          
         ],
       ),
       tabBuilder: (BuildContext context, int index) {
@@ -71,8 +68,13 @@ class _CupertinoTabBarState extends State<CupertinoTabBarr> {
                 ),
               );
             } else if (index == 2) {
-              return Center(
-                child: Text('pestaña 3'),
+              return CupertinoPageScaffold(
+                navigationBar: CupertinoNavigationBar(
+                  middle: Text('Contacts'),
+                ),
+                child: Center(
+                  child: CallListContac(),
+                ),
               );
             } else if (index == 3) {
               return Center(
@@ -89,7 +91,6 @@ class _CupertinoTabBarState extends State<CupertinoTabBarr> {
   }
 }
 
-
 //make call
 class Call {
   final String contactName;
@@ -97,7 +98,6 @@ class Call {
 
   Call(this.contactName, this.dateTime);
 }
-
 
 class CallList extends StatelessWidget {
   const CallList({Key? key});
@@ -110,9 +110,9 @@ class CallList extends StatelessWidget {
       Call("Diomedez Diaz", "yesterday, 5:45 PM"),
       Call("Antonio eliseo", "yesterday, 3:15 PM"),
       Call("Andrea ", "yesterday, 10:15 PM"),
-     Call("Carol G ", "Today, 3:50 PM"),
-     Call("Juaco pertuz ", "yesterday, 6:50 PM"),
-     Call("Oscar Gamarra", "Today, 11:20 AM"),
+      Call("Carol G ", "Today, 3:50 PM"),
+      Call("Juaco pertuz ", "yesterday, 6:50 PM"),
+      Call("Oscar Gamarra", "Today, 11:20 AM"),
     ];
 
     return ListView.builder(
@@ -122,9 +122,47 @@ class CallList extends StatelessWidget {
         return CupertinoListTile(
           title: Text(call.contactName),
           subtitle: Text(call.dateTime),
-          leading: Icon(Icons.call), 
-          //trailing: Icon(Icons.cancel), 
-       
+          leading: Icon(Icons.call),
+          //trailing: Icon(Icons.cancel),
+        );
+      },
+    );
+  }
+}
+
+class Contac {
+  final String contactNam;
+  final String Num;
+  Contac(this.contactNam, this.Num);
+}
+
+class CallListContac extends StatelessWidget {
+  const CallListContac({Key? key});
+
+  @override
+  Widget build(BuildContext context) {
+    // list
+    final List<Contac> Contacs = [
+      Contac("Daniel Rivera", "32489058"),
+      Contac("Diomedez Diaz","32285730"),
+      Contac("Antonio eliseo","313895759"),
+      Contac("Andrea ","3805355"),
+      Contac("Carol G ","3256788876"),
+      Contac("Juaco pertuz ","2345567890"),
+      Contac("Oscar Gamarra","3506788"),
+      Contac("Martin Elias","38406788"),
+      Contac("Churo ","385406788"),
+    ];
+
+    return ListView.builder(
+      itemCount: Contacs.length,
+      itemBuilder: (context, index) {
+        final contactt = Contacs[index];
+        return CupertinoListTile(
+          title: Text(contactt.contactNam), 
+          subtitle: Text(contactt.Num),
+          leading: Icon(Icons.add_box),
+          trailing: Icon(Icons.call),
         );
       },
     );
